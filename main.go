@@ -2,12 +2,14 @@ package restaurant_management
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
 	"os"
-	"restaurant-management/middleware"
-	"restaurant-management/routes"
+	"restaurant/db"
+	"restaurant/middleware"
+	"restaurant/routes"
 )
 
-var foodCollection *mongo.
+var foodCollection *mongo.Collection = db.OpenCollection(db.Client, "food")
 
 func main() {
 	port := os.Getenv("PORT")
